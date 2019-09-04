@@ -1,0 +1,150 @@
+<ul class="nav nav-tabs mt-2" id="myTabAdmin" role="Admin">
+    <li class="nav-item">
+        <a class="nav-link active" id="livro-tab" data-toggle="tab" href="#livro" role="tab" aria-controls="livro"
+            aria-selected="true">Livros</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab" aria-controls="categoria"
+            aria-selected="false">Categorias</a>
+    </li>
+</ul>
+
+<div class="tab-content" id="myAdmin">
+    <div class="tab-pane fade show active" id="livro" role="tabpanel" aria-labelledby="livro-tab">
+        <div class="form-row mt-2">
+            <div class="col">
+                <input type="text" class="form-control" id="pesquisa"
+                    placeholder="Pesquise por livros, autores ou categorias">
+            </div>
+
+            <div class="col">
+                <button type="button" class="btn btn-primary" onclick="carregarLivro()">Pesquisar</button>
+            </div>
+        </div>
+
+        <div class="row mt-2 mb-2">
+            <div class="col-4">
+                <div class="list-group" id="list-livro" role="tablist">
+                </div>
+            </div>
+
+            <div class="col-8">
+                <div class="tab-content" id="detail-livro">
+                    <form class="mb-3">
+                        <div class="form-group">
+                            <label for="inputTitulo">Titulo</label>
+
+                            <input type="text" class="form-control" id="inputTitulo" placeholder="Titulo do livro">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputAutor">Autor(a)</label>
+
+                                <input type="text" class="form-control" id="inputAutor" placeholder="Autor(a)">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="inputCateg">Categoria</label>
+
+                                <select id="inputCateg" class="form-control categoria"></select>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="inputIdioma">Idioma</label>
+
+                                <select id="inputIdioma" class="form-control">
+                                    <option selected>Selecione o idioma</option>
+
+                                    <option value="Português">Português</option>
+
+                                    <option value="Inglês">Inglês</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="inputPags">Quantidade de páginas</label>
+
+                                <input type="text" class="form-control" id="inputPags">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEditora">Editora</label>
+
+                                <input type="text" class="form-control" id="inputEditora" placeholder="Editora">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="inputEdicao">Edição</label>
+
+                                <input type="text" class="form-control" id="inputEdicao" placeholder="Edição">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputSinopse">Sinopse do livro</label>
+
+                            <textarea class="form-control" id="inputSinopse" placeholder="Sinopse"></textarea>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm">
+                                <button type="button" onclick="cadastrarLivro()"
+                                    class="btn btn-success shadow">Cadastrar livro</button>
+                            </div>
+
+                            <div class="col-sm">
+                                <button type="button" onclick="atualizarLivro()" class="btn btn-warning shadow">Alterar
+                                    livro</button>
+                            </div>
+
+                            <div class="col-sm">
+                                <button type="button" onclick="removerLivro()" class="btn btn-danger shadow">Excluir
+                                    livro</button>
+                            </div>
+
+                            <div class="col-sm">
+                                <button type="button" onclick="limparCampos()"
+                                    class="btn btn-block btn-dark shadow">Limpar campos</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="categoria" role="tabpanel" aria-labelledby="categoria-tab">
+        <form class="mt-2">
+            <div class="form-group">
+                <label for="inputCategoria">Nome da categoria</label>
+
+                <input type="text" class="form-control" id="inputCategoria" placeholder="Categoria" required><button
+                    type="button" onclick="cadastrarCategoria()" class="btn btn-success shadow mt-2">Cadastrar categoria</button>
+            </div>
+
+            <div class="form-group">
+                <label for="selectCateg">Categoria</label>
+
+                <select id="selectCateg" class="form-control categoria"></select>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <button type="button" onclick="removerCategoria()" class="btn btn-danger shadow">Excluir
+                        categoria</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        carregarCategoria();
+        carregarLivro();
+    });
+</script>
